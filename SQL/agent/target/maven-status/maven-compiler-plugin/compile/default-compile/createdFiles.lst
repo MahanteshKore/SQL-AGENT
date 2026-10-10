@@ -1,0 +1,6 @@
+com\example\demo\DemoApplication.class
+com\example\demo\StudentRepository.class
+com\example\demo\Student.class
+com\example\demo\GeminiController.class
+com\example\demo\GeminiConfig.class
+com\example\demo\StudentController.class

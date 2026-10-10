@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>IntelliQuery - AI SQL Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header class="header">
+
+    <div class="logo">
+        ⚡ Intelli<span>Query</span>
+    </div>
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        AI Connected
+
+    </div>
+
+</header>
+
+
+<!-- Main -->
+
+<main class="container">
+
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="badge">
+            ✨ AI-Powered Database Assistant
+        </div>
+
+        <h1>
+            Ask Your Database<br>
+            in <span>Natural Language</span>
+        </h1>
+
+        <p>
+            Convert your questions into SQL using AI
+            and get instant database results.
+        </p>
+
+    </section>
+
+
+
+    <!-- Add Student -->
+
+    <section class="add-student-card">
+
+        <div class="card-header">
+
+            <div class="header-icon">
+                +
+            </div>
+
+            <div>
+
+                <h2>Add New Student</h2>
+
+                <p>
+                    Add student information to your database
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="studentForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- Roll Number -->
+
+                <div class="input-group">
+
+                    <label>
+                        Roll Number
+                    </label>
+
+                    <input
+                        type="number"
+                        id="rollNo"
+                        placeholder="Enter roll number"
+                        min="1"
+                        required>
+
+                </div>
+
+
+
+                <!-- Student Name -->
+
+                <div class="input-group">
+
+                    <label>
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter student name"
+                        required>
+
+                </div>
+
+
+
+                <!-- Branch -->
+
+                <div class="input-group">
+
+                    <label>
+                        Branch
+                    </label>
+
+                    <select
+                        id="studentBranch"
+                        required>
+
+                        <option value="">
+                            Select Branch
+                        </option>
+
+                        <option value="AI-ML">
+                            AI-ML
+                        </option>
+
+                        <option value="CSE">
+                            CSE
+                        </option>
+
+                        <option value="IT">
+                            IT
+                        </option>
+
+                        <option value="ECE">
+                            ECE
+                        </option>
+
+                        <option value="ME">
+                            ME
+                        </option>
+
+                        <option value="EEE">
+                            EEE
+                        </option>
+
+                        <option value="CIVIL">
+                            CIVIL
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Marks -->
+
+                <div class="input-group">
+
+                    <label>
+                        Marks
+                    </label>
+
+                    <input
+                        type="number"
+                        id="studentMarks"
+                        placeholder="Enter marks"
+                        min="0"
+                        max="100"
+                        required>
+
+                </div>
+
+
+
+                <!-- Attendance -->
+
+                <div class="input-group">
+
+                    <label>
+                        Attendance (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="studentAttendance"
+                        placeholder="Enter attendance"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                        required>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    onclick="clearStudentForm()">
+
+                    Clear
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="addStudentButton">
+
+                    <span>＋</span>
+                    Add Student
+
+                </button>
+
+            </div>
+
+
+            <div id="addMessage"></div>
+
+
+        </form>
+
+    </section>
+
+
+
+    <!-- Query Card -->
+
+    <section class="card query-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    🔎 Ask IntelliQuery
+                </h2>
+
+                <p>
+                    Enter your question about the database
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <textarea
+            id="question"
+            placeholder="Example: Show CSE students above 80 marks">
+        </textarea>
+
+
+        <div class="query-footer">
+
+            <div class="examples">
+
+                💡 Try:
+                Show students with marks above 85
+
+            </div>
+
+
+            <button
+                id="runButton"
+                onclick="runQuery()">
+
+                ⚡ Run Query
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="loading"
+            class="loading">
+
+            <span class="spinner"></span>
+
+            IntelliQuery is generating your answer...
+
+        </div>
+
+
+        <div
+            id="error"
+            class="error">
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SQL Card -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    💻 Generated SQL
+                </h2>
+
+                <p>
+                    SQL generated by Gemini AI
+                </p>
+
+            </div>
+
+
+            <button
+                class="copy-button"
+                onclick="copySQL()">
+
+                📋 Copy
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="sql"
+            class="sql-box">
+
+            SQL query will appear here...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Results Card -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    📊 Query Results
+                </h2>
+
+                <p>
+                    Data retrieved from PostgreSQL
+                </p>
+
+            </div>
+
+
+            <div
+                id="resultCount"
+                class="result-count">
+
+                0 records
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="results"
+            class="empty">
+
+            Run a query to see results.
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- Footer -->
+
+<footer>
+
+    <p>
+
+        IntelliQuery © 2026 |
+        AI-Powered Natural Language to SQL
+
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
