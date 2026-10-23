@@ -1,4 +1,3 @@
-```dockerfile
 FROM maven:3.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
@@ -8,9 +7,8 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-# Display static resources packaged in the JAR
-RUN echo "=== Checking packaged static files ===" && \
-    jar tf target/*.jar | grep -E 'BOOT-INF/classes/(static|public)/' || true
+RUN echo "=== Checking packaged static files ===" && 
+jar tf target/*.jar | grep -E 'BOOT-INF/classes/(static|public)/' || true
 
 FROM eclipse-temurin:21-jre
 
@@ -21,4 +19,3 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 
 CMD ["java", "-jar", "app.jar"]
-```
