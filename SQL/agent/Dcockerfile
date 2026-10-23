@@ -7,8 +7,9 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-RUN echo "=== Checking packaged static files ===" && 
-jar tf target/*.jar | grep -E 'BOOT-INF/classes/(static|public)/' || true
+RUN jar tf target/*.jar > jar-contents.txt
+
+RUN cat jar-contents.txt
 
 FROM eclipse-temurin:21-jre
 
