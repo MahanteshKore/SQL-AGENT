@@ -157,7 +157,7 @@ public class QueryController {
         // ==========================================
         // EXECUTE SQL
         // ==========================================
-
+        
         try {
 
     // ==========================================
@@ -230,7 +230,7 @@ public class QueryController {
 }
     }
 
-
+    
     // =====================================================
     // LOCAL FALLBACK SQL GENERATOR
     // =====================================================
@@ -242,16 +242,45 @@ public class QueryController {
 
 
         // ---------------------------------------------
+        // TOPPER / HIGHEST-MARKS STUDENT
+        // ---------------------------------------------
+        if (q.contains("topper") ||
+                q.contains("highest student") ||
+                q.contains("highest marks") ||
+                q.contains("highest mark") ||
+                q.contains("maximum marks") ||
+                q.contains("most marks") ||
+                q.contains("student who scored the highest") ||
+                q.contains("student with the highest")) {
+            return "SELECT * FROM students ORDER BY marks DESC LIMIT 1";
+        }
+
+        // ---------------------------------------------
+        // STUDENTS IN ASCENDING ORDER (LOWEST TO HIGHEST MARKS)
+        // ---------------------------------------------
+        if ((q.contains("ascending") || q.contains("asc order") || q.contains("low to high")) &&
+                (q.contains("student") || q.contains("table") || q.contains("marks"))) {
+            return "SELECT * FROM students ORDER BY marks ASC";
+        }
+
+        // ---------------------------------------------
+        // STUDENTS IN DESCENDING ORDER (HIGHEST TO LOWEST MARKS)
+        // ---------------------------------------------
+        if ((q.contains("descending") || q.contains("desc order") || q.contains("high to low")) &&
+                (q.contains("student") || q.contains("table") || q.contains("marks"))) {
+            return "SELECT * FROM students ORDER BY marks DESC";
+        }
+
+        // ---------------------------------------------
         // SHOW ALL STUDENTS
         // ---------------------------------------------
-
-        if (
-                q.contains("show all students") ||
+        if (q.contains("show all students") ||
                 q.contains("list all students") ||
                 q.equals("show students") ||
-                q.equals("list students")
-        ) {
-
+                q.equals("list students") ||
+                q.contains("show student table") ||
+                q.contains("list student table") ||
+                q.equals("show all records")) {
             return "SELECT * FROM students";
         }
 
