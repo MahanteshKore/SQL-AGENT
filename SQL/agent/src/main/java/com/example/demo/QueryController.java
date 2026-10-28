@@ -350,7 +350,20 @@ public class QueryController {
                         "WHERE marks = " + marks;
             }
         }
+         // 4. Show N students
+    // TOP N STUDENTS BY MARKS
+java.util.regex.Matcher topMatcher =
+        java.util.regex.Pattern
+                .compile("\\btop\\s+(\\d+)\\s+students?\\b")
+                .matcher(q);
 
+if (topMatcher.find()) {
+    int limit = Integer.parseInt(topMatcher.group(1));
+
+    if (limit >= 1 && limit <= 1000) {
+        return "SELECT * FROM students ORDER BY marks DESC LIMIT " + limit;
+    }
+}
 
         // ---------------------------------------------
         // CSE STUDENTS
