@@ -429,7 +429,54 @@ body.light-mode .preview-code span {
 body.light-mode .sql-box {
     color: #364b86;
 }
+/* Query Results - Excel Style Table */
 
+#results {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+#results table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    table-layout: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+#results th {
+    background: var(--surface2);
+    color: var(--text);
+    font-weight: bold;
+    padding: 15px 18px;
+    text-align: left;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+#results td {
+    padding: 13px 18px;
+    text-align: left;
+    color: var(--text);
+    border: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+#results tbody tr:nth-child(even) {
+    background: var(--surface2);
+}
+
+#results tbody tr:hover {
+    background: rgba(139, 114, 255, 0.12);
+}
+
+#results table {
+    border-radius: 10px;
+    overflow: hidden;
+}
 /* MOBILE RESPONSIVE */
 
 @media (max-width: 750px) {
