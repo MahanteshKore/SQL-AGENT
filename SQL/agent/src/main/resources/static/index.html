@@ -1,437 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelliQuery - AI SQL Assistant</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Header -->
-
 <header class="header">
+    <div class="logo">⚡ Intelli<span>Query</span></div>
 
-    <div class="logo">
-        ⚡ Intelli<span>Query</span>
+    <div class="header-actions">
+        <div class="status">
+            <span class="status-dot"></span>
+            AI Connected
+        </div>
+        <button class="theme-toggle" id="themeToggle">☀️ Light Mode</button>
     </div>
-
-    <div class="status">
-
-        <span class="status-dot"></span>
-
-        AI Connected
-
-    </div>
-
 </header>
 
+<!-- HOME PAGE -->
+<section id="homePage" class="home-page">
 
-<!-- Main -->
-
-<main class="container">
-
-
-    <!-- Hero -->
-
-    <section class="hero">
-
-        <div class="badge">
-            ✨ AI-Powered Database Assistant
-        </div>
+    <div class="home-content">
+        <div class="badge">✨ AI-POWERED DATABASE ASSISTANT</div>
 
         <h1>
-            Ask Your Database<br>
-            in <span>Natural Language</span>
+            Your Database.<br>
+            Your Language.<br>
+            <span>Powered by AI.</span>
         </h1>
 
         <p>
-            Convert your questions into SQL using AI
-            and get instant database results.
+            Interact with your database using simple English.
+            Generate SQL queries and retrieve results instantly
+            with the power of Artificial Intelligence.
         </p>
 
-    </section>
+        <button class="start-button" id="startButton">
+            Get Started <span>→</span>
+        </button>
 
+        <div class="home-note">
+            ⚡ Smart Queries &nbsp; • &nbsp; 🔒 Secure Database
+            &nbsp; • &nbsp; 🚀 AI Powered
+        </div>
+    </div>
 
+    <div class="home-preview">
+        <div class="preview-top">
+            <span class="preview-dot"></span>
+            <span class="preview-dot"></span>
+            <span class="preview-dot"></span>
+            <span class="preview-title">IntelliQuery AI</span>
+        </div>
+
+        <div class="preview-body">
+            <p class="preview-label">YOUR QUESTION</p>
+            <div class="preview-question">
+                Show CSE students with marks above 85
+            </div>
+
+            <p class="preview-label">GENERATED SQL</p>
+            <div class="preview-code">
+                <span>SELECT</span> *<br>
+                <span>FROM</span> students<br>
+                <span>WHERE</span> branch = 'CSE'<br>
+                <span>AND</span> marks &gt; 85;
+            </div>
+
+            <div class="preview-success">
+                ✓ Query ready to execute
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- APPLICATION PAGE -->
+<main id="appPage" class="container" hidden>
+
+    <div class="app-heading">
+        <button class="back-button" id="backButton">← Home</button>
+        <div>
+            <h1>Welcome to IntelliQuery</h1>
+            <p>Manage students and ask questions about your database.</p>
+        </div>
+    </div>
 
     <!-- Add Student -->
-
-    <section class="add-student-card">
+    <section class="card add-student-card">
 
         <div class="card-header">
-
-            <div class="header-icon">
-                +
-            </div>
-
             <div>
-
-                <h2>Add New Student</h2>
-
-                <p>
-                    Add student information to your database
-                </p>
-
+                <h2>＋ Add New Student</h2>
+                <p>Add student information to your database</p>
             </div>
-
         </div>
-
 
         <form id="studentForm">
-
-
             <div class="form-grid">
 
-
-                <!-- Roll Number -->
-
                 <div class="input-group">
-
-                    <label>
-                        Roll Number
-                    </label>
-
-                    <input
-                        type="number"
-                        id="rollNo"
-                        placeholder="Enter roll number"
-                        min="1"
-                        required>
-
+                    <label>Roll Number</label>
+                    <input type="number" id="rollNo"
+                           placeholder="Enter roll number" min="1" required>
                 </div>
 
-
-
-                <!-- Student Name -->
-
                 <div class="input-group">
-
-                    <label>
-                        Student Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="studentName"
-                        placeholder="Enter student name"
-                        required>
-
+                    <label>Student Name</label>
+                    <input type="text" id="studentName"
+                           placeholder="Enter student name" required>
                 </div>
 
-
-
-                <!-- Branch -->
-
                 <div class="input-group">
-
-                    <label>
-                        Branch
-                    </label>
-
-                    <select
-                        id="studentBranch"
-                        required>
-
-                        <option value="">
-                            Select Branch
-                        </option>
-
-                        <option value="AI-ML">
-                            AI-ML
-                        </option>
-
-                        <option value="CSE">
-                            CSE
-                        </option>
-
-                        <option value="IT">
-                            IT
-                        </option>
-
-                        <option value="ECE">
-                            ECE
-                        </option>
-
-                        <option value="ME">
-                            ME
-                        </option>
-
-                        <option value="EEE">
-                            EEE
-                        </option>
-
-                        <option value="CIVIL">
-                            CIVIL
-                        </option>
-
+                    <label>Branch</label>
+                    <select id="studentBranch" required>
+                        <option value="">Select Branch</option>
+                        <option value="AI-ML">AI-ML</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ECE">ECE</option>
+                        <option value="ME">ME</option>
+                        <option value="EEE">EEE</option>
+                        <option value="CIVIL">CIVIL</option>
                     </select>
-
                 </div>
-
-
-
-                <!-- Marks -->
 
                 <div class="input-group">
-
-                    <label>
-                        Marks
-                    </label>
-
-                    <input
-                        type="number"
-                        id="studentMarks"
-                        placeholder="Enter marks"
-                        min="0"
-                        max="100"
-                        required>
-
+                    <label>Marks</label>
+                    <input type="number" id="studentMarks"
+                           placeholder="Enter marks" min="0" max="100" required>
                 </div>
-
-
-
-                <!-- Attendance -->
 
                 <div class="input-group">
-
-                    <label>
-                        Attendance (%)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="studentAttendance"
-                        placeholder="Enter attendance"
-                        min="0"
-                        max="100"
-                        step="0.01"
-                        required>
-
+                    <label>Attendance (%)</label>
+                    <input type="number" id="studentAttendance"
+                           placeholder="Enter attendance" min="0"
+                           max="100" step="0.01" required>
                 </div>
-
 
             </div>
-
-
-            <!-- Buttons -->
 
             <div class="form-actions">
+                <button type="button" class="btn-secondary"
+                        onclick="clearStudentForm()">Clear</button>
 
-                <button
-                    type="button"
-                    class="btn-secondary"
-                    onclick="clearStudentForm()">
-
-                    Clear
-
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="btn-primary"
-                    id="addStudentButton">
-
-                    <span>＋</span>
-                    Add Student
-
-                </button>
-
+                <button type="submit" class="btn-primary"
+                        id="addStudentButton">＋ Add Student</button>
             </div>
-
 
             <div id="addMessage"></div>
-
-
         </form>
-
     </section>
 
-
-
-    <!-- Query Card -->
-
+    <!-- Ask Query -->
     <section class="card query-card">
-
         <div class="card-header">
-
             <div>
-
-                <h2>
-                    🔎 Ask IntelliQuery
-                </h2>
-
-                <p>
-                    Enter your question about the database
-                </p>
-
+                <h2>🔎 Ask IntelliQuery</h2>
+                <p>Enter your question about the database</p>
             </div>
-
         </div>
 
-
-        <textarea
-            id="question"
-            placeholder="Example: Show CSE students above 80 marks">
-        </textarea>
-
+        <textarea id="question"
+                  placeholder="Example: Show CSE students above 80 marks"></textarea>
 
         <div class="query-footer">
-
             <div class="examples">
-
-                💡 Try:
-                Show students with marks above 85
-
+                💡 Try: Show students with marks above 85
             </div>
 
-
-            <button
-                id="runButton"
-                onclick="runQuery()">
-
+            <button id="runButton" onclick="runQuery()">
                 ⚡ Run Query
-
             </button>
-
         </div>
 
-
-        <div
-            id="loading"
-            class="loading">
-
+        <div id="loading" class="loading">
             <span class="spinner"></span>
-
             IntelliQuery is generating your answer...
-
         </div>
 
-
-        <div
-            id="error"
-            class="error">
-        </div>
-
-
+        <div id="error" class="error"></div>
     </section>
 
-
-
-    <!-- SQL Card -->
-
+    <!-- Generated SQL -->
     <section class="card">
-
         <div class="card-header">
-
             <div>
-
-                <h2>
-                    💻 Generated SQL
-                </h2>
-
-                <p>
-                    SQL generated by Gemini AI
-                </p>
-
+                <h2>💻 Generated SQL</h2>
+                <p>SQL generated by Gemini AI</p>
             </div>
 
-
-            <button
-                class="copy-button"
-                onclick="copySQL()">
-
-                📋 Copy
-
-            </button>
-
+            <button class="copy-button" onclick="copySQL()">📋 Copy</button>
         </div>
 
-
-        <div
-            id="sql"
-            class="sql-box">
-
+        <div id="sql" class="sql-box">
             SQL query will appear here...
-
         </div>
-
     </section>
 
-
-
-    <!-- Results Card -->
-
+    <!-- Results -->
     <section class="card">
-
         <div class="card-header">
-
             <div>
-
-                <h2>
-                    📊 Query Results
-                </h2>
-
-                <p>
-                    Data retrieved from PostgreSQL
-                </p>
-
+                <h2>📊 Query Results</h2>
+                <p>Data retrieved from PostgreSQL</p>
             </div>
 
-
-            <div
-                id="resultCount"
-                class="result-count">
-
-                0 records
-
-            </div>
-
+            <div id="resultCount" class="result-count">0 records</div>
         </div>
 
-
-        <div
-            id="results"
-            class="empty">
-
+        <div id="results" class="empty">
             Run a query to see results.
-
         </div>
-
     </section>
-
 
 </main>
 
-
-
-<!-- Footer -->
-
 <footer>
-
-    <p>
-
-        IntelliQuery © 2026 |
-        AI-Powered Natural Language to SQL
-
-    </p>
-
+    <p>IntelliQuery © 2026 | Developed By DSMP Group 2 | AI-Powered Natural Language to SQL</p>
 </footer>
 
+<script>
+    const homePage = document.getElementById("homePage");
+    const appPage = document.getElementById("appPage");
+
+    document.getElementById("startButton").addEventListener("click", () => {
+        homePage.hidden = true;
+        appPage.hidden = false;
+        window.scrollTo(0, 0);
+    });
+
+    document.getElementById("backButton").addEventListener("click", () => {
+        appPage.hidden = true;
+        homePage.hidden = false;
+        window.scrollTo(0, 0);
+    });
+
+    const themeToggle = document.getElementById("themeToggle");
+
+    function applyTheme(theme) {
+        document.body.classList.toggle("light-mode", theme === "light");
+        themeToggle.textContent =
+            theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+        localStorage.setItem("intelliquery-theme", theme);
+    }
+
+    themeToggle.addEventListener("click", () => {
+        const isLight = document.body.classList.contains("light-mode");
+        applyTheme(isLight ? "dark" : "light");
+    });
+
+    applyTheme(localStorage.getItem("intelliquery-theme") || "dark");
+</script>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
